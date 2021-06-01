@@ -1,6 +1,7 @@
 package com.eziz.listview
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Layout
@@ -67,6 +68,13 @@ class MainActivity : AppCompatActivity() {
             planetCard.earth_card_info.text = posPlanets.constInfo
             planetCard.earth_card_name.text = posPlanets.constName
 
+            planetCard.setOnClickListener {
+                var intent = Intent(context, Planets_info::class.java)
+                intent.putExtra("constName", posPlanets.constName)
+                intent.putExtra("constInfo", posPlanets.constInfo)
+                intent.putExtra("constPicture", posPlanets.constPicture)
+                context!!.startActivity(intent)
+            }
             return planetCard
         }
     }
